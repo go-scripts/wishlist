@@ -146,6 +146,7 @@ func (e Endpoint) ShouldListen() bool {
 
 // Config represents the wishlist configuration.
 type Config struct {
+	Title        string                              `yaml:"title"`     // Title of the list.
 	Listen       string                              `yaml:"listen"`    // Address to listen on.
 	Port         int64                               `yaml:"port"`      // Port to start the first server on.
 	Endpoints    []*Endpoint                         `yaml:"endpoints"` // Endpoints to list.

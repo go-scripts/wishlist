@@ -26,9 +26,9 @@ var (
 
 // NewListing creates a new listing model for the given endpoints and SSH session.
 // If session is nil, it is assume to be a local listing.
-func NewListing(endpoints []*Endpoint, client SSHClient, r *lipgloss.Renderer) *ListModel {
+func NewListing(title string, endpoints []*Endpoint, client SSHClient, r *lipgloss.Renderer) *ListModel {
 	l := list.New(nil, list.NewDefaultDelegate(), 0, 0)
-	l.Title = "Directory Listing"
+	l.Title = title
 	l.AdditionalFullHelpKeys = func() []key.Binding {
 		return []key.Binding{copyIPAddr}
 	}

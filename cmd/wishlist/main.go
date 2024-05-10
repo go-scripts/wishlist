@@ -21,11 +21,11 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	lm "github.com/charmbracelet/wish/logging"
-	"github.com/charmbracelet/wishlist"
-	"github.com/charmbracelet/wishlist/srv"
-	"github.com/charmbracelet/wishlist/sshconfig"
-	"github.com/charmbracelet/wishlist/tailscale"
-	"github.com/charmbracelet/wishlist/zeroconf"
+	"github.com/go-scripts/wishlist"
+	"github.com/go-scripts/wishlist/srv"
+	"github.com/go-scripts/wishlist/sshconfig"
+	"github.com/go-scripts/wishlist/tailscale"
+	"github.com/go-scripts/wishlist/zeroconf"
 	"github.com/gobwas/glob"
 	"github.com/hashicorp/go-multierror"
 	mcobra "github.com/muesli/mango-cobra"
@@ -397,6 +397,7 @@ func workLocally(config wishlist.Config, args []string) error {
 	// either no args or arg is a list
 	if len(args) == 0 || args[0] == "list" {
 		m := wishlist.NewListing(
+			config.Title,
 			config.Endpoints,
 			wishlist.NewLocalSSHClient(),
 			lipgloss.NewRenderer(os.Stderr),

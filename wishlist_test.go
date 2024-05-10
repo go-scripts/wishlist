@@ -26,12 +26,13 @@ func TestEndointToListItems(t *testing.T) {
 func TestNewWishlist(t *testing.T) {
 	t.Run("local", func(t *testing.T) {
 		cl := NewLocalSSHClient()
-		lm := NewListing([]*Endpoint{
-			{
+		lm := NewListing(
+			"test",
+			[]*Endpoint{{
 				Name:    "name",
 				Address: "anything",
 			},
-		}, cl, testRenderer)
+			}, cl, testRenderer)
 		require.Len(t, lm.endpoints, 1)
 		require.Equal(t, lm.client, cl)
 	})

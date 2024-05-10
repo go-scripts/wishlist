@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/charmbracelet/wishlist"
+	"github.com/go-scripts/wishlist"
 	"github.com/stretchr/testify/require"
 )
 
@@ -23,7 +23,7 @@ func TestParseExampleYaml(t *testing.T) {
 		Address: "foo.local:2234",
 		Link: wishlist.Link{
 			Name: "Optional link name",
-			URL:  "https://github.com/charmbracelet/wishlist",
+			URL:  "https://github.com/go-scripts/wishlist",
 		},
 		Desc:          "A description of this endpoint.\nCan have multiple lines.",
 		User:          "notme",
@@ -183,7 +183,7 @@ func TestApplyHints(t *testing.T) {
 			Desc:          "The descriptions",
 			Link: wishlist.Link{
 				Name: "foo.bar",
-				URL:  "https://github.com/charmbracelet/wishlist",
+				URL:  "https://github.com/go-scripts/wishlist",
 			},
 			SendEnv:                  []string{"FOO_*"},
 			SetEnv:                   []string{"FOO_TEST=bar"},
@@ -210,7 +210,7 @@ func TestApplyHints(t *testing.T) {
 		Desc:          "The descriptions",
 		Link: wishlist.Link{
 			Name: "foo.bar",
-			URL:  "https://github.com/charmbracelet/wishlist",
+			URL:  "https://github.com/go-scripts/wishlist",
 		},
 		SendEnv:                  []string{"FOO_*"},
 		SetEnv:                   []string{"FOO_TEST=bar"},

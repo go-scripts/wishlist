@@ -10,8 +10,8 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
 	bm "github.com/charmbracelet/wish/bubbletea"
-	"github.com/charmbracelet/wishlist/blocking"
-	"github.com/charmbracelet/wishlist/multiplex"
+	"github.com/go-scripts/wishlist/blocking"
+	"github.com/go-scripts/wishlist/multiplex"
 	"github.com/muesli/termenv"
 	"github.com/teivah/broadcast"
 )
@@ -62,6 +62,7 @@ func listingMiddleware(config *Config, endpointRelay *broadcast.Relay[[]*Endpoin
 			errch := make(chan error, 1)
 			appch := make(chan bool, 1)
 			model := NewListing(
+				config.Title,
 				config.Endpoints,
 				&remoteClient{
 					session: s,
