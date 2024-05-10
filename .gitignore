@@ -1,0 +1,9 @@
+wishlist.yaml
+.wishlist
+dist
+wishlist.log
+cover.txt
+manpages
+completions
+cmd/wishlist/wishlist
+.env
