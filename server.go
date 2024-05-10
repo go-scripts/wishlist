@@ -60,6 +60,7 @@ func Serve(config *Config) error {
 				listingMiddleware(config, relay),
 				cmdsMiddleware(config.Endpoints),
 			},
+			IsMainServer: true,
 		},
 	}, config.Endpoints...) {
 		if endpoint.Name == "list" && config.Metrics.Enabled {

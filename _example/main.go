@@ -14,13 +14,15 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	bm "github.com/charmbracelet/wish/bubbletea"
+	"github.com/charmbracelet/wish/logging"
 	lm "github.com/charmbracelet/wish/logging"
 	"github.com/charmbracelet/wishlist"
+	gossh "golang.org/x/crypto/ssh"
 )
 
 func main() {
 	k, err := keygen.New(
-		filepath.Join(".wishlist", "server"),
+		filepath.Join(".ssh_keys", "server"),
 		keygen.WithKeyType(keygen.Ed25519),
 	)
 	if err != nil {
@@ -36,12 +38,39 @@ func main() {
 	cfg := &wishlist.Config{
 		Port: 2233,
 		Factory: func(e wishlist.Endpoint) (*ssh.Server, error) {
+			if e.IsMainServer {
+				return wish.NewServer(
+					wish.WithAddress(e.Address),
+					wish.WithHostKeyPEM(k.RawPrivateKey()),
+					wish.WithKeyboardInteractiveAuth(func(_ ssh.Context, challenger gossh.KeyboardInteractiveChallenge) bool {
+						log.Info("keyboard-interactive")
+						answers, err := challenger(
+							"", "",
+							[]string{
+								"♦ How much is 2+3: ",
+								"♦ Which editor is best, vim or emacs? ",
+							},
+							[]bool{true, true},
+						)
+						if err != nil {
+							return false
+						}
+						// here we check for the correct answers:
+						return len(answers) == 2 && answers[0] == "5" && answers[1] == "vim"
+					}),
+					wish.WithMiddleware(
+						append(
+							e.Middlewares, // this is the important bit: the middlewares from the endpoint
+							lm.Middleware(),
+							activeterm.Middleware(),
+						)...,
+					),
+				)
+			}
+
 			return wish.NewServer(
 				wish.WithAddress(e.Address),
 				wish.WithHostKeyPEM(k.RawPrivateKey()),
-				wish.WithPublicKeyAuth(func(ctx ssh.Context, key ssh.PublicKey) bool {
-					return true
-				}),
 				wish.WithMiddleware(
 					append(
 						e.Middlewares, // this is the important bit: the middlewares from the endpoint
@@ -55,6 +84,7 @@ func main() {
 			{
 				Name: "bubbletea",
 				Middlewares: []wish.Middleware{
+					logging.Middleware(),
 					bm.Middleware(func(s ssh.Session) (tea.Model, []tea.ProgramOption) {
 						r := bm.MakeRenderer(s)
 						return initialModel(r), nil

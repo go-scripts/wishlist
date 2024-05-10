@@ -53,6 +53,7 @@ type Endpoint struct {
 	IdentityFiles            []string          `yaml:"identity_files"`            // IdentityFiles is only used when in local mode.
 	Timeout                  time.Duration     `yaml:"connect_timeout"`           // Connection timeout.
 	Middlewares              []wish.Middleware `yaml:"-"`                         // wish middlewares you can use in the factory method.
+	IsMainServer             bool              `yaml:"is_main_server"`            // IsMainServer defines whether this endpoint is the main server.
 }
 
 // EndpointHint can be used to match a discovered endpoint (through zeroconf
