@@ -1,6 +1,6 @@
-module github.com/charmbracelet/wishlist
+module github.com/go-scripts/wishlist
 
-go 1.19
+go 1.22.2
 
 require (
 	github.com/charmbracelet/bubbles v0.18.0
@@ -9,8 +9,9 @@ require (
 	github.com/charmbracelet/lipgloss v0.10.0
 	github.com/charmbracelet/log v0.4.0
 	github.com/charmbracelet/promwish v0.7.0
-	github.com/charmbracelet/ssh v0.0.0-20240401141849-854cddfa2917
+	github.com/charmbracelet/ssh v0.0.0-20240507011153-ec70bd03034c
 	github.com/charmbracelet/wish v1.4.0
+	github.com/charmbracelet/wishlist v0.14.1
 	github.com/gobwas/glob v0.2.3
 	github.com/grandcat/zeroconf v1.0.0
 	github.com/hashicorp/go-multierror v1.1.1
@@ -44,7 +45,6 @@ require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect
