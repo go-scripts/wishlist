@@ -36,7 +36,8 @@ func main() {
 
 	// wishlist config
 	cfg := &wishlist.Config{
-		Port: 2233,
+		Title: "SSH Directories",
+		Port:  2233,
 		Factory: func(e wishlist.Endpoint) (*ssh.Server, error) {
 			if e.IsMainServer {
 				return wish.NewServer(
