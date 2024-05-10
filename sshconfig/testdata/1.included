@@ -1,0 +1,8 @@
+Host *
+	User ciclano
+
+Host *.foo.bar
+	User fulano
+	IdentityFile ~/.ssh/id_rsa2
+
+# vim: set ft=sshconfig:

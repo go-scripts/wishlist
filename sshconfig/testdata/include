@@ -1,0 +1,10 @@
+Include ./*.included
+
+Host test.foo.bar
+	Port 2222
+	IdentityFile ~/.ssh/other_id
+
+Host something.else
+	Port 2323
+
+# vim: set ft=sshconfig:

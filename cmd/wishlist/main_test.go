@@ -1,0 +1,221 @@
+package main
+
+import (
+	"os"
+	"path/filepath"
+	"testing"
+	"time"
+
+	"github.com/charmbracelet/wishlist"
+	"github.com/stretchr/testify/require"
+)
+
+func TestParseExampleYaml(t *testing.T) {
+	input := "../../_example/config.yaml"
+	cfg, path, err := getConfig(input, nil)
+	require.NoError(t, err)
+	require.Equal(t, input, path)
+	require.Equal(t, "127.0.0.1", cfg.Listen)
+	require.Equal(t, int64(2223), cfg.Port)
+	require.Len(t, cfg.Endpoints, 1)
+	require.Equal(t, wishlist.Endpoint{
+		Name:    "thename",
+		Address: "foo.local:2234",
+		Link: wishlist.Link{
+			Name: "Optional link name",
+			URL:  "https://github.com/charmbracelet/wishlist",
+		},
+		Desc:          "A description of this endpoint.\nCan have multiple lines.",
+		User:          "notme",
+		RemoteCommand: "uptime -a",
+		ForwardAgent:  true,
+		IdentityFiles: []string{"~/.ssh/id_rsa", "~/.ssh/id_ed25519"},
+		RequestTTY:    true,
+		Timeout:       10 * time.Second,
+		SetEnv:        []string{"FOO=bar", "BAR=baz"},
+		SendEnv:       []string{"LC_*", "LANG", "SOME_ENV"},
+		ProxyJump:     "user@host:22",
+	}, *cfg.Endpoints[0])
+	require.Len(t, cfg.Users, 1)
+	require.Equal(t, wishlist.User{
+		Name: "carlos",
+		PublicKeys: []string{
+			"ssh-rsa AAAAB3Nz...",
+			"ssh-ed25519 AAAA...",
+		},
+	}, cfg.Users[0])
+}
+
+func TestParseExampleSSHConfig(t *testing.T) {
+	input := "../../_example/config"
+	cfg, path, err := getConfig(input, nil)
+	require.NoError(t, err)
+	require.Equal(t, input, path)
+	require.Empty(t, cfg.Listen)
+	require.Empty(t, cfg.Port)
+	require.Len(t, cfg.Endpoints, 2)
+	require.Equal(t, wishlist.Endpoint{
+		Name:          "foo",
+		Address:       "foo.bar:2223",
+		User:          "notme",
+		IdentityFiles: []string{"~/.ssh/foo_ed25519"},
+		ForwardAgent:  true,
+		RequestTTY:    true,
+		Timeout:       20 * time.Second,
+		RemoteCommand: "tmux a",
+		SendEnv:       []string{"FOO_*", "BAR_*"},
+		SetEnv:        []string{"HELLO=world", "BYE=world"},
+		ProxyJump:     "user@host:22",
+	}, *cfg.Endpoints[0])
+	require.Equal(t, wishlist.Endpoint{
+		Name:    "ssh.example.com",
+		Address: "ssh.example.com:22",
+	}, *cfg.Endpoints[1])
+}
+
+func TestGetConfig(t *testing.T) {
+	tmp := t.TempDir()
+	dir, err := os.Getwd()
+	require.NoError(t, err)
+	t.Cleanup(func() { require.NoError(t, os.Chdir(dir)) })
+
+	require.NoError(t, os.Chdir(tmp))
+	require.NoError(t, os.Mkdir(".wishlist", 0o755))
+	require.NoError(t, os.WriteFile(".wishlist/config.yaml", []byte(`
+# just a valid yaml file to default to
+`), 0o644))
+
+	t.Run("yaml", func(t *testing.T) {
+		t.Run("valid", func(t *testing.T) {
+			cfg, _, err := getConfig(filepath.Join(dir, "testdata/valid.yaml"), nil)
+			require.NoError(t, err)
+			require.Equal(t, wishlist.Config{Listen: "127.0.0.1"}, cfg)
+		})
+
+		t.Run("invalid", func(t *testing.T) {
+			_, _, err := getConfig(filepath.Join(dir, "testdata/invalid.yaml"), nil)
+			require.Error(t, err)
+		})
+
+		t.Run("not found", func(t *testing.T) {
+			_, _, err := getConfig(filepath.Join(dir, "testdata/nope.yaml"), nil)
+			require.NoError(t, err)
+		})
+	})
+
+	t.Run("ssh", func(t *testing.T) {
+		t.Run("valid", func(t *testing.T) {
+			_, _, err := getConfig(filepath.Join(dir, "testdata/valid"), nil)
+			require.NoError(t, err)
+		})
+
+		t.Run("invalid", func(t *testing.T) {
+			_, _, err := getConfig(filepath.Join(dir, "testdata/invalid"), nil)
+			require.Error(t, err)
+		})
+
+		t.Run("not found", func(t *testing.T) {
+			_, _, err := getConfig(filepath.Join(dir, "testdata/nope"), nil)
+			require.NoError(t, err)
+		})
+	})
+}
+
+func TestUserConfigPaths(t *testing.T) {
+	t.Run("all", func(t *testing.T) {
+		cfg, err := os.UserConfigDir()
+		require.NoError(t, err)
+
+		home, err := os.UserHomeDir()
+		require.NoError(t, err)
+		paths := userConfigPaths()
+		require.Len(t, paths, 8)
+		require.Equal(t, []string{
+			".wishlist/config.yaml",
+			".wishlist/config.yml",
+			".wishlist/config",
+			filepath.Join(cfg, "wishlist.yaml"),
+			filepath.Join(cfg, "wishlist.yml"),
+			filepath.Join(cfg, "wishlist"),
+			filepath.Join(home, ".ssh", "config"),
+			"/etc/ssh/ssh_config",
+		}, paths)
+	})
+
+	t.Run("no config dir", func(t *testing.T) {
+		_ = os.Unsetenv("XDG_CONFIG_HOME")
+		_ = os.Unsetenv("HOME")
+		_ = os.Unsetenv("AppData")
+		_ = os.Unsetenv("USERPROFILE")
+
+		paths := userConfigPaths()
+		require.Len(t, paths, 4)
+		require.Equal(t, []string{
+			".wishlist/config.yaml",
+			".wishlist/config.yml",
+			".wishlist/config",
+			"/etc/ssh/ssh_config",
+		}, paths)
+	})
+}
+
+func TestApplyHints(t *testing.T) {
+	boolPtr := func(b bool) *bool {
+		return &b
+	}
+	result := applyHints([]*wishlist.Endpoint{
+		{
+			Name:    "foo.bar.local",
+			Address: "foo.bar.local:22",
+		},
+	}, []wishlist.EndpointHint{
+		{
+			Match: "match nothing",
+			User:  "nope",
+		},
+		{
+			Match:         "*.local",
+			Port:          "2345",
+			User:          "carlos",
+			ForwardAgent:  boolPtr(true),
+			RequestTTY:    boolPtr(true),
+			RemoteCommand: "tmux a",
+			Desc:          "The descriptions",
+			Link: wishlist.Link{
+				Name: "foo.bar",
+				URL:  "https://github.com/charmbracelet/wishlist",
+			},
+			SendEnv:                  []string{"FOO_*"},
+			SetEnv:                   []string{"FOO_TEST=bar"},
+			PreferredAuthentications: []string{"publickey"},
+			IdentityFiles:            []string{"~/.ssh/charm_id_ed25519"},
+			Timeout:                  time.Minute,
+		},
+		{
+			Match: "invalid.*******$$$\a\a\a",
+		},
+		{
+			Match: "foo.*.local",
+			Port:  "22234",
+		},
+	})
+	require.Len(t, result, 1)
+	require.Equal(t, wishlist.Endpoint{
+		Name:          "foo.bar.local",
+		Address:       "foo.bar.local:22234",
+		User:          "carlos",
+		ForwardAgent:  true,
+		RequestTTY:    true,
+		RemoteCommand: "tmux a",
+		Desc:          "The descriptions",
+		Link: wishlist.Link{
+			Name: "foo.bar",
+			URL:  "https://github.com/charmbracelet/wishlist",
+		},
+		SendEnv:                  []string{"FOO_*"},
+		SetEnv:                   []string{"FOO_TEST=bar"},
+		PreferredAuthentications: []string{"publickey"},
+		IdentityFiles:            []string{"~/.ssh/charm_id_ed25519"},
+		Timeout:                  time.Minute,
+	}, *result[0])
+}
