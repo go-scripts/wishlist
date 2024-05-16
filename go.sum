@@ -10,6 +10,10 @@ github.com/cenkalti/backoff v2.2.1+incompatible h1:tNowT99t7UNflLxfYYSlKYsBpXdEe
 github.com/cenkalti/backoff v2.2.1+incompatible/go.mod h1:90ReRw6GdpyfrHakVjL/QHaoyV4aDUVVkXQJJJ3NXXM=
 github.com/cespare/xxhash/v2 v2.2.0 h1:DC2CZ1Ep5Y4k3ZQ899DldepgrayRUGE6BBZ/cd9Cj44=
 github.com/cespare/xxhash/v2 v2.2.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
+github.com/charmbracelet/bubbles v0.18.0 h1:PYv1A036luoBGroX6VWjQIE9Syf2Wby2oOl/39KLfy0=
+github.com/charmbracelet/bubbles v0.18.0/go.mod h1:08qhZhtIwzgrtBjAcJnij1t1H0ZRjwHyGsy6AL11PSw=
+github.com/charmbracelet/bubbletea v0.26.2 h1:Eeb+n75Om9gQ+I6YpbCXQRKHt5Pn4vMwusQpwLiEgJQ=
+github.com/charmbracelet/bubbletea v0.26.2/go.mod h1:6I0nZ3YHUrQj7YHIHlM8RySX4ZIthTliMY+W8X8b+Gs=
 github.com/charmbracelet/keygen v0.5.0 h1:XY0fsoYiCSM9axkrU+2ziE6u6YjJulo/b9Dghnw6MZc=
 github.com/charmbracelet/keygen v0.5.0/go.mod h1:DfvCgLHxZ9rJxdK0DGw3C/LkV4SgdGbnliHcObV3L+8=
 github.com/charmbracelet/lipgloss v0.10.0 h1:KWeXFSexGcfahHX+54URiZGkBFazf70JNMtwg/AFW3s=
@@ -38,8 +42,8 @@ github.com/go-logfmt/logfmt v0.6.0 h1:wGYYu3uicYdqXVgoYbvnkrPVXkuLM1p1ifugDMEdRi
 github.com/go-logfmt/logfmt v0.6.0/go.mod h1:WYhtIu8zTZfxdn5+rREduYbwxfcBr/Vr6KEVveWlfTs=
 github.com/go-scripts/bubbles v0.19.2 h1:19ERELGch5aJGG7z0RDaKxz98bzNnyRxqlTqGd/SpL4=
 github.com/go-scripts/bubbles v0.19.2/go.mod h1:OKryVR4om8pNsMjFf5RMMenwmNupGmrXhtcOlv1Em4I=
-github.com/charmbracelet/bubbletea v0.27.1 h1:pJlXqsVPoLYbEK8ka6xXn5GNI6v5f+Nj+8XfHKK1Ahg=
-github.com/charmbracelet/bubbletea v0.27.1/go.mod h1:REAstLhJiOp4zjTEH1fSwyNO/ugiahCU2/XlRvTx9ak=
+github.com/go-scripts/bubbletea v0.27.1 h1:pJlXqsVPoLYbEK8ka6xXn5GNI6v5f+Nj+8XfHKK1Ahg=
+github.com/go-scripts/bubbletea v0.27.1/go.mod h1:REAstLhJiOp4zjTEH1fSwyNO/ugiahCU2/XlRvTx9ak=
 github.com/go-scripts/wish v1.5.2 h1:VRIY3rBrVJAQgjcDIHEhQufNAedM7Y3QRHRYXROj46g=
 github.com/go-scripts/wish v1.5.2/go.mod h1:1oXgIz+wTW8ChYQ6dtYU6VPA6oFVWCdrnR1lkVsSMmw=
 github.com/gobwas/glob v0.2.3 h1:A4xDbljILXROh+kObIiy5kIaPYD8e96x1tgBhUI5J+Y=
