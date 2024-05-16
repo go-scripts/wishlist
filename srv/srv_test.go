@@ -4,7 +4,7 @@ import (
 	"net"
 	"testing"
 
-	"github.com/charmbracelet/wishlist"
+	"github.com/go-script/wishlist"
 	"github.com/stretchr/testify/require"
 )
 

@@ -1,4 +1,4 @@
-module github.com/charmbracelet/wishlist
+module github.com/go-script/wishlist
 
 go 1.22.2
 
