@@ -5,12 +5,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/keygen"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/ssh"
-	"github.com/go-scripts/bubbles/spinner"
 	"github.com/go-scripts/wish"
 	"github.com/go-scripts/wish/activeterm"
 	bm "github.com/go-scripts/wish/bubbletea"

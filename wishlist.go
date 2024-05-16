@@ -6,10 +6,10 @@ import (
 	"net"
 
 	"github.com/charmbracelet/bubbles/key"
+	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
-	"github.com/go-scripts/bubbles/list"
 	"github.com/muesli/termenv"
 )
 

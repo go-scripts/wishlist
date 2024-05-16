@@ -10,7 +10,6 @@ require (
 	github.com/charmbracelet/log v0.4.0
 	github.com/charmbracelet/promwish v0.7.0
 	github.com/charmbracelet/ssh v0.0.0-20240515141028-546b2ee33a4d
-	github.com/go-scripts/bubbles v0.19.2
 	github.com/go-scripts/wish v1.5.2
 	github.com/gobwas/glob v0.2.3
 	github.com/grandcat/zeroconf v1.0.0
@@ -64,7 +63,7 @@ require (
 	github.com/prometheus/common v0.44.0 // indirect
 	github.com/prometheus/procfs v0.11.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/sahilm/fuzzy v0.1.1 // indirect
+	github.com/sahilm/fuzzy v0.1.1-0.20230530133925-c48e322e2a8f // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
