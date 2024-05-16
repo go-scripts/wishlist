@@ -11,7 +11,7 @@ import (
 	"testing/iotest"
 	"time"
 
-	"github.com/go-scripts/wishlist"
+	"github.com/charmbracelet/wishlist"
 	"github.com/stretchr/testify/require"
 )
 

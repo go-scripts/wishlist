@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/log"
-	"github.com/go-scripts/wishlist"
+	"github.com/charmbracelet/wishlist"
 	"golang.org/x/oauth2/clientcredentials"
 )
 

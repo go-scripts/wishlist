@@ -1,9 +1,9 @@
 # Wishlist
 
 <p>
-    <a href="https://github.com/go-scripts/wishlist/releases"><img src="https://img.shields.io/github/release/charmbracelet/wishlist.svg" alt="Latest Release"></a>
-    <a href="https://pkg.go.dev/github.com/go-scripts/wishlist?tab=doc"><img src="https://godoc.org/github.com/golang/gddo?status.svg" alt="GoDoc"></a>
-    <a href="https://github.com/go-scripts/wishlist/actions"><img src="https://github.com/go-scripts/wishlist/workflows/build/badge.svg" alt="Build Status"></a>
+    <a href="https://github.com/charmbracelet/wishlist/releases"><img src="https://img.shields.io/github/release/charmbracelet/wishlist.svg" alt="Latest Release"></a>
+    <a href="https://pkg.go.dev/github.com/charmbracelet/wishlist?tab=doc"><img src="https://godoc.org/github.com/golang/gddo?status.svg" alt="GoDoc"></a>
+    <a href="https://github.com/charmbracelet/wishlist/actions"><img src="https://github.com/charmbracelet/wishlist/workflows/build/badge.svg" alt="Build Status"></a>
     <a href="https://nightly.link/charmbracelet/wishlist/workflows/nightly/main"><img src="https://shields.io/badge/-Nightly%20Builds-orange?logo=hackthebox&logoColor=fff&style=appveyor"/></a>
 </p>
 
@@ -12,7 +12,7 @@ The SSH directory ✨
 ![Gif](https://vhs.charm.sh/vhs-3YDAKLasKh7IgWNTkHKrHB.gif)
 
 With Wishlist you can have a single entry point for multiple SSH endpoints,
-whether they are [Wish](https://github.com/go-scripts/wish) apps or not.
+whether they are [Wish](https://github.com/charmbracelet/wish) apps or not.
 
 As a server, it can be used to start multiple SSH apps within a single package
 and list them over SSH.
@@ -65,12 +65,12 @@ Or download a pre-compiled binary or package from the [releases][releases] page.
 Or just build it yourself (requires Go 1.19+):
 
 ```bash
-git clone https://github.com/go-scripts/wishlist.git
+git clone https://github.com/charmbracelet/wishlist.git
 cd wishlist
 go build ./cmd/wishlist/
 ```
 
-[releases]: https://github.com/go-scripts/wishlist/releases
+[releases]: https://github.com/charmbracelet/wishlist/releases
 
 ## Usage
 

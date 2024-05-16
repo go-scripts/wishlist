@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/charmbracelet/log"
-	"github.com/go-scripts/wishlist"
+	"github.com/charmbracelet/wishlist"
 	"github.com/grandcat/zeroconf"
 )
 

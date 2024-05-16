@@ -11,12 +11,12 @@ import (
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/ssh"
-	"github.com/go-scripts/wish"
-	"github.com/go-scripts/wish/activeterm"
-	bm "github.com/go-scripts/wish/bubbletea"
-	"github.com/go-scripts/wish/logging"
-	lm "github.com/go-scripts/wish/logging"
-	"github.com/go-scripts/wishlist"
+	"github.com/charmbracelet/wish"
+	"github.com/charmbracelet/wish/activeterm"
+	bm "github.com/charmbracelet/wish/bubbletea"
+	"github.com/charmbracelet/wish/logging"
+	lm "github.com/charmbracelet/wish/logging"
+	"github.com/charmbracelet/wishlist"
 	gossh "golang.org/x/crypto/ssh"
 )
 
