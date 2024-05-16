@@ -3,7 +3,7 @@ package wishlist
 import (
 	"strings"
 
-	"github.com/charmbracelet/bubbles/list"
+	"github.com/go-scripts/bubbles/list"
 )
 
 var _ list.Item = ItemWrapper{}

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/charmbracelet/bubbles/key"
-	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
+	"github.com/go-scripts/bubbles/key"
+	"github.com/go-scripts/bubbles/list"
 	"github.com/muesli/termenv"
 )
 
@@ -71,6 +71,7 @@ func (m *ListModel) SetItems(endpoints []*Endpoint) tea.Cmd {
 func features(endpoints []*Endpoint) []descriptor {
 	var hasDesc bool
 	var hasLink bool
+	var hasUrl bool
 	for _, endpoint := range endpoints {
 		if !endpoint.Valid() {
 			continue
@@ -81,7 +82,10 @@ func features(endpoints []*Endpoint) []descriptor {
 		if endpoint.Link.URL != "" {
 			hasLink = true
 		}
-		if hasDesc && hasLink {
+		if endpoint.DisplayUrl != true {
+			hasUrl = true
+		}
+		if hasDesc && hasLink && hasUrl {
 			break
 		}
 	}
@@ -93,7 +97,11 @@ func features(endpoints []*Endpoint) []descriptor {
 	if hasLink {
 		descriptors = append(descriptors, withLink)
 	}
-	return append(descriptors, withSSHURL)
+	if hasUrl {
+		descriptors = append(descriptors, withSSHURL)
+	}
+
+	return descriptors
 }
 
 func endpointsToListItems(endpoints []*Endpoint, descriptors []descriptor, styles styles) []list.Item {

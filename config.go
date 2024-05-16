@@ -54,6 +54,7 @@ type Endpoint struct {
 	Timeout                  time.Duration     `yaml:"connect_timeout"`           // Connection timeout.
 	Middlewares              []wish.Middleware `yaml:"-"`                         // wish middlewares you can use in the factory method.
 	IsMainServer             bool              `yaml:"is_main_server"`            // IsMainServer defines whether this endpoint is the main server.
+	DisplayUrl               bool              `yaml:"display_url"`               // DisplayUrl defines whether to display the URL in the description.
 }
 
 // EndpointHint can be used to match a discovered endpoint (through zeroconf
