@@ -9,8 +9,8 @@ import (
 	"os/user"
 	"path/filepath"
 
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/log"
-	tea "github.com/go-scripts/bubbletea"
 	"github.com/muesli/cancelreader"
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/term"

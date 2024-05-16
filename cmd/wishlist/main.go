@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/keygen"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/ssh"
-	tea "github.com/go-scripts/bubbletea"
 	"github.com/go-scripts/wish"
 	"github.com/go-scripts/wish/activeterm"
 	lm "github.com/go-scripts/wish/logging"

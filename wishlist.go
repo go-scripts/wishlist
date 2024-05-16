@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"net"
 
+	"github.com/charmbracelet/bubbles/key"
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
-	"github.com/go-scripts/bubbles/key"
 	"github.com/go-scripts/bubbles/list"
-	tea "github.com/go-scripts/bubbletea"
 	"github.com/muesli/termenv"
 )
 
@@ -82,7 +82,7 @@ func features(endpoints []*Endpoint) []descriptor {
 		if endpoint.Link.URL != "" {
 			hasLink = true
 		}
-		if endpoint.DisplayUrl != true {
+		if endpoint.DisplayUrl == true {
 			hasUrl = true
 		}
 		if hasDesc && hasLink && hasUrl {

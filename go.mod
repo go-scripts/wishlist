@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/promwish v0.7.0
 	github.com/charmbracelet/ssh v0.0.0-20240515141028-546b2ee33a4d
 	github.com/go-scripts/bubbles v0.19.2
-	github.com/go-scripts/bubbletea v0.27.1
+	github.com/charmbracelet/bubbletea v0.27.1
 	github.com/go-scripts/wish v1.5.2
 	github.com/gobwas/glob v0.2.3
 	github.com/grandcat/zeroconf v1.0.0
