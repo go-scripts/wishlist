@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/charmbracelet/ssh"
-	"github.com/charmbracelet/wish"
+	"github.com/go-scripts/wish"
 	"github.com/stretchr/testify/require"
 )
 

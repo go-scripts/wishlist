@@ -12,7 +12,7 @@ The SSH directory ✨
 ![Gif](https://vhs.charm.sh/vhs-3YDAKLasKh7IgWNTkHKrHB.gif)
 
 With Wishlist you can have a single entry point for multiple SSH endpoints,
-whether they are [Wish](https://github.com/charmbracelet/wish) apps or not.
+whether they are [Wish](https://github.com/go-scripts/wish) apps or not.
 
 As a server, it can be used to start multiple SSH apps within a single package
 and list them over SSH.

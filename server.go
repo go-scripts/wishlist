@@ -14,7 +14,7 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/promwish"
 	"github.com/charmbracelet/ssh"
-	"github.com/charmbracelet/wish"
+	"github.com/go-scripts/wish"
 	"github.com/hashicorp/go-multierror"
 	"github.com/teivah/broadcast"
 )
