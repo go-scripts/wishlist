@@ -6,8 +6,8 @@ import (
 	"io"
 	"os"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/log"
+	tea "github.com/go-scripts/bubbletea"
 	"github.com/muesli/termenv"
 	gossh "golang.org/x/crypto/ssh"
 )

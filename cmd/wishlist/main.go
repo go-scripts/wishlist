@@ -13,7 +13,6 @@ import (
 	"strings"
 	"time"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/keygen"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
@@ -21,6 +20,7 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	lm "github.com/charmbracelet/wish/logging"
+	tea "github.com/go-scripts/bubbletea"
 	"github.com/go-scripts/wishlist"
 	"github.com/go-scripts/wishlist/srv"
 	"github.com/go-scripts/wishlist/sshconfig"

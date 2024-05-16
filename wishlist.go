@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"net"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
 	"github.com/go-scripts/bubbles/key"
 	"github.com/go-scripts/bubbles/list"
+	tea "github.com/go-scripts/bubbletea"
 	"github.com/muesli/termenv"
 )
 

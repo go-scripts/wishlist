@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 	"time"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/keygen"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
@@ -16,6 +15,7 @@ import (
 	"github.com/charmbracelet/wish/logging"
 	lm "github.com/charmbracelet/wish/logging"
 	"github.com/go-scripts/bubbles/spinner"
+	tea "github.com/go-scripts/bubbletea"
 	"github.com/go-scripts/wishlist"
 	gossh "golang.org/x/crypto/ssh"
 )

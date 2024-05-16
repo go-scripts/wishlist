@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"strings"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
 	bm "github.com/charmbracelet/wish/bubbletea"
+	tea "github.com/go-scripts/bubbletea"
 	"github.com/go-scripts/wishlist/blocking"
 	"github.com/go-scripts/wishlist/multiplex"
 	"github.com/muesli/termenv"
