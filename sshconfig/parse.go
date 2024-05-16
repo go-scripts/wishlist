@@ -15,8 +15,8 @@ import (
 	"time"
 
 	"github.com/charmbracelet/log"
-	"github.com/go-script/wishlist"
-	"github.com/go-script/wishlist/home"
+	"github.com/go-scripts/wishlist"
+	"github.com/go-scripts/wishlist/home"
 	"github.com/gobwas/glob"
 	"github.com/kevinburke/ssh_config"
 )

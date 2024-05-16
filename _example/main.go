@@ -16,7 +16,7 @@ import (
 	bm "github.com/charmbracelet/wish/bubbletea"
 	"github.com/charmbracelet/wish/logging"
 	lm "github.com/charmbracelet/wish/logging"
-	"github.com/go-script/wishlist"
+	"github.com/go-scripts/wishlist"
 	gossh "golang.org/x/crypto/ssh"
 )
 

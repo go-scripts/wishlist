@@ -1,4 +1,4 @@
-module github.com/go-script/wishlist
+module github.com/go-scripts/wishlist
 
 go 1.22.2
 

@@ -11,7 +11,7 @@ import (
 	"github.com/charmbracelet/keygen"
 	"github.com/charmbracelet/log"
 	"github.com/charmbracelet/ssh"
-	"github.com/go-script/wishlist/home"
+	"github.com/go-scripts/wishlist/home"
 	gossh "golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/agent"
 	"golang.org/x/crypto/ssh/knownhosts"

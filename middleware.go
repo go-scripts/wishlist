@@ -10,8 +10,8 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
 	bm "github.com/charmbracelet/wish/bubbletea"
-	"github.com/go-script/wishlist/blocking"
-	"github.com/go-script/wishlist/multiplex"
+	"github.com/go-scripts/wishlist/blocking"
+	"github.com/go-scripts/wishlist/multiplex"
 	"github.com/muesli/termenv"
 	"github.com/teivah/broadcast"
 )
